@@ -15,6 +15,10 @@
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>23</java.version>
+
+		<!-- The main class to start by executing java -jar -->
+		<start-class>vttp.ssf.assessment.eventmanagement.EventmanagementApplication</start-class>
+
 	</properties>
 	<dependencies>
 
@@ -70,6 +74,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+
+				<!-- <configuration>    
+            		<mainClass>vttp.ssf.assessment.eventmanagement.EventmanagementApplication</mainClass>
+       			</configuration> -->
+
 			</plugin>
 		</plugins>
 	</build>

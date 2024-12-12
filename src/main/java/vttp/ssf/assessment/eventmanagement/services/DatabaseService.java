@@ -1,6 +1,7 @@
 package vttp.ssf.assessment.eventmanagement.services;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
 import java.time.Period;
@@ -9,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 
 import jakarta.json.Json;
@@ -29,15 +31,21 @@ public class DatabaseService {
     // Task 1
 
     // return list of events in console
-    public List<Event> readFile(String fileName) throws FileNotFoundException { 
+    public List<Event> readFile(String fileName) throws IOException { 
 
         // list to hold events 
         List<Event> events = new ArrayList<>(); 
 
         String path = "data/" + fileName;
+        // // String path = fileName;
 
-        // read "events.json" using a stream 
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+        // // read "events.json" using a stream 
+        // InputStream inputStream = getClass().getClassLoader().getResourceAsStream(path);
+
+        ClassPathResource resource = new ClassPathResource(path);
+
+        InputStream inputStream = resource.getInputStream();
+
         
         if (inputStream == null) {
             throw new FileNotFoundException("events.json not found");
