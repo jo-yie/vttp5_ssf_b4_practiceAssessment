@@ -1,5 +1,7 @@
 package vttp.ssf.assessment.eventmanagement.models;
 
+import java.util.Date;
+
 public class Event {
 
     // task 0
@@ -7,20 +9,23 @@ public class Event {
     private Integer eventId; 
     private String eventName; 
     private Integer eventSize; 
-    private Long eventDate; 
+    private Integer eventDate; 
     private Integer participants;
 
+    private Date newDate;
     
     // constructors
     public Event() {
     }
 
-    public Event(Integer eventId, String eventName, Integer eventSize, Long eventDate, Integer participants) {
+    public Event(Integer eventId, String eventName, Integer eventSize, Integer eventDate, Integer participants) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventSize = eventSize;
         this.eventDate = eventDate;
         this.participants = participants;
+
+        // this.newDate = newDate;
 
     }
 
@@ -50,11 +55,11 @@ public class Event {
         this.eventSize = eventSize;
     }
 
-    public Long getEventDate() {
+    public Integer getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Long eventDate) {
+    public void setEventDate(Integer eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -64,6 +69,16 @@ public class Event {
 
     public void setParticipants(Integer participants) {
         this.participants = participants;
+    }
+
+
+    // new date in Date format
+    public Date getNewDate() {
+        return newDate;
+    }
+
+    public void setNewDate(Date newDate) {
+        this.newDate = newDate;
     }
 
 

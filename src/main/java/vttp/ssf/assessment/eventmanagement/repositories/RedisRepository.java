@@ -1,6 +1,7 @@
 package vttp.ssf.assessment.eventmanagement.repositories;
 
 import java.io.StringReader;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,7 +62,7 @@ public class RedisRepository {
 	}
 
 
-	// TODO: Task 4
+	// Task 4
 	public Event getEvent(Integer index) {
 
 		String eventJsonString = (String) redisTemplate.opsForHash().get("events", index.toString());
@@ -86,7 +87,7 @@ public class RedisRepository {
 			jo.getInt("eventId"),
 			jo.getString("eventName"),
 			jo.getInt("eventSize"),
-			(long)jo.getInt("eventDate"),
+			jo.getInt("eventDate"),
 			jo.getInt("participants")
 
 		); 
@@ -95,5 +96,21 @@ public class RedisRepository {
 
     }
 
+	// task 5 
+	// get all events from redis 
+	public List<Object> getAllEventsFromRedis() { 
+
+        return redisTemplate.opsForHash().values("events");
+
+    }
+
+	// task 7 
+	// increment num participants based on tickets bought 
+	public void incrementParticipants(Event event, Integer newParticipantTotal) { 
+
+		event.setParticipants(newParticipantTotal);
+		saveRecord(event);
+
+	}
 
 }
