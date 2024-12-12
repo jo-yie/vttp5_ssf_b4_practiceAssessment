@@ -1,5 +1,8 @@
 package vttp.ssf.assessment.eventmanagement.models;
 
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 
 public class Event {
@@ -9,7 +12,7 @@ public class Event {
     private Integer eventId; 
     private String eventName; 
     private Integer eventSize; 
-    private Integer eventDate; 
+    private Long eventDate; 
     private Integer participants;
 
     private Date newDate;
@@ -18,14 +21,14 @@ public class Event {
     public Event() {
     }
 
-    public Event(Integer eventId, String eventName, Integer eventSize, Integer eventDate, Integer participants) {
+    public Event(Integer eventId, String eventName, Integer eventSize, Long eventDate, Integer participants) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.eventSize = eventSize;
         this.eventDate = eventDate;
         this.participants = participants;
 
-        // this.newDate = newDate;
+        this.newDate = convertDate(eventDate);
 
     }
 
@@ -55,11 +58,11 @@ public class Event {
         this.eventSize = eventSize;
     }
 
-    public Integer getEventDate() {
+    public Long getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(Integer eventDate) {
+    public void setEventDate(Long eventDate) {
         this.eventDate = eventDate;
     }
 
@@ -88,5 +91,10 @@ public class Event {
         return eventId + "," + eventName + "," + eventSize + "," + eventDate + "," + participants;
     }
 
-     
+    // convert int date to Date 
+    public Date convertDate(Long dateOld) {
+        return new Date(dateOld);
+
+    }
+      
 }

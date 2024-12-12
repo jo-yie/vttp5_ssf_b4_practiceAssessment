@@ -87,7 +87,7 @@ public class RedisRepository {
 			jo.getInt("eventId"),
 			jo.getString("eventName"),
 			jo.getInt("eventSize"),
-			jo.getInt("eventDate"),
+			jo.getJsonNumber("eventDate").longValue(),
 			jo.getInt("participants")
 
 		); 

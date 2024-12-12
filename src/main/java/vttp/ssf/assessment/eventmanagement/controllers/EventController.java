@@ -25,17 +25,6 @@ public class EventController {
 		// call service layer 
 		List<Event> events = databaseService.getAllEvents();
 
-		// TODO fix date 
-		// get date in Date format 
-		for (Event e : events) {
-
-			Long originalDate = (long) e.getEventDate();
-
-			Date newDate = databaseService.LongToDate(originalDate);
-			e.setNewDate(newDate);
-
-		}
-
 		model.addAttribute("events", events);
 
 		// return "events-list.html"

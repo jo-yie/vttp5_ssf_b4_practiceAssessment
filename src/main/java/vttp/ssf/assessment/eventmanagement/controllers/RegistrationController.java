@@ -30,11 +30,6 @@ public class RegistrationController {
         // get event from redis using event id
         Event event = databaseService.getEventFromRepo(Integer.parseInt(eventId));
 
-        // convert integer date to Date 
-        Long originalDate = (long) event.getEventDate();
-		Date newDate = databaseService.LongToDate(originalDate);
-		event.setNewDate(newDate);
-
         model.addAttribute("event", event);
 
 
@@ -56,11 +51,6 @@ public class RegistrationController {
 
         // get event from redis using event id
         Event event = databaseService.getEventFromRepo(Integer.parseInt(eventId));
-
-        // convert integer date to Date 
-        Long originalDate = (long) event.getEventDate();
-        Date newDate = databaseService.LongToDate(originalDate);
-        event.setNewDate(newDate);
 
         model.addAttribute("event", event);
 

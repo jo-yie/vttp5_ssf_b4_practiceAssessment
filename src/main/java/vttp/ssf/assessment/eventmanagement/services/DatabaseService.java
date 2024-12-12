@@ -59,7 +59,7 @@ public class DatabaseService {
             Integer eventId = joEvent.getInt("eventId");
             String eventName = joEvent.getString("eventName");
             Integer eventSize = joEvent.getInt("eventSize");
-            Integer eventDate = joEvent.getInt("eventDate");
+            Long eventDate = joEvent.getJsonNumber("eventDate").longValue();
             Integer participants = joEvent.getInt("participants");
 
             // create Event POJO 
